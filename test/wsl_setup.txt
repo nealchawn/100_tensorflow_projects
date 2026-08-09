@@ -1,0 +1,27 @@
+wsl --install -d Ubuntu-24.04
+
+
+# Start this distribution
+wsl -d Ubuntu-24.04
+
+# Show installed distributions and their state
+wsl -l -v
+
+# Stop only this distribution
+wsl --terminate Ubuntu-24.04
+
+# Stop all distributions and the managed WSL VM
+wsl --shutdown
+
+## Get GPU working
+
+SITE="$(python -c 'import site; print(site.getsitepackages()[0])')"
+
+NVIDIA_LIBS="$(
+  find "$SITE/nvidia" -type d -name lib -print |
+  paste -sd: -
+)"
+
+export LD_LIBRARY_PATH="/usr/lib/wsl/lib:$NVIDIA_LIBS"
+
+python test_gpu.py
