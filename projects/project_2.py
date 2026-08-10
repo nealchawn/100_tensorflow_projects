@@ -3,9 +3,13 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 """
+Project 2: Logistic Regression Classifier
+
 Description:
-Build a simple linear regression model using TensorFlow 2 to learn the relationship y = 3x + 2 from synthetic data.
+Build a logistic regression model using TensorFlow 2 to classify points based on a binary label. 
+We'll generate synthetic data with a sigmoid decision boundary.
 """
+
  
 # Generate synthetic binary classification data
 X = np.linspace(-10, 10, 200).reshape(-1, 1)                  # 200 points between -10 and 10
